@@ -160,6 +160,135 @@ body{
 <body>
 
   <script>
+/* ================================
+   IDORAMU – TikTok Safe Downloader
+   Funciona en:
+   ✅ TikTok normal
+   ✅ TikTok Lite
+   ✅ Chrome / Samsung / Firefox
+   ================================ */
+
+(function () {
+  const ua = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(ua);
+  const isTikTok = /TikTok/i.test(ua);
+
+  // URL REAL DEL APK
+  const APK_URL = "https://link-bio-snowy-three.vercel.app/IDORAMU.apk";
+
+  // Si NO es Android, no hacemos nada
+  if (!isAndroid) return;
+
+  // ================================
+  // CASO 1: ANDROID + TIKTOK
+  // ================================
+  if (isTikTok) {
+    document.body.innerHTML = `
+      <div style="
+        min-height:100vh;
+        background:radial-gradient(900px 500px at 50% -200px,#1e293b,#020617);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:28px;
+        font-family:system-ui,Inter;
+        color:#e5edff;
+      ">
+
+        <div style="
+          max-width:360px;
+          background:linear-gradient(180deg,#0f172a,#020617);
+          border-radius:22px;
+          padding:26px;
+          box-shadow:0 25px 60px rgba(2,6,23,.8);
+          border:1px solid rgba(255,255,255,.06);
+        ">
+
+          <div style="
+            width:64px;
+            height:64px;
+            border-radius:20px;
+            margin:0 auto 16px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(61,220,132,.12);
+            color:#3ddc84;
+            font-size:34px;
+            font-weight:900;
+          ">
+            ⬇
+          </div>
+
+          <h2 style="
+            margin:0 0 10px;
+            font-size:22px;
+            color:#3ddc84;
+          ">
+            Descargar IDORAMU
+          </h2>
+
+          <p style="
+            margin:0 0 18px;
+            color:#94a3b8;
+            font-size:14px;
+            line-height:1.4;
+          ">
+            TikTok bloquea la descarga de aplicaciones.
+            <br><br>
+            Para continuar, sigue estos pasos:
+          </p>
+
+          <ol style="
+            text-align:left;
+            font-size:14px;
+            line-height:1.6;
+            color:#e5edff;
+            padding-left:18px;
+            margin:0 0 18px;
+          ">
+            <li>Toca <b>⋮</b> arriba a la derecha</li>
+            <li>Elige <b>Abrir en navegador</b></li>
+            <li>Descarga la app normalmente</li>
+          </ol>
+
+          <div style="
+            background:rgba(255,255,255,.04);
+            border-radius:14px;
+            padding:10px;
+            font-size:12px;
+            color:#94a3b8;
+          ">
+            Funciona en Chrome, Samsung Internet,
+            Firefox, Brave y Edge
+          </div>
+
+        </div>
+
+        <p style="
+          margin-top:18px;
+          font-size:12px;
+          color:#64748b;
+        ">
+          © 2025 Idoramu · App oficial
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  // ================================
+  // CASO 2: ANDROID + NAVEGADOR REAL
+  // ================================
+  // Descarga directa segura
+  window.location.href = APK_URL;
+
+})();
+</script>
+
+  <script>
 function isTikTokWebView() {
   return /TikTok/i.test(navigator.userAgent);
 }
