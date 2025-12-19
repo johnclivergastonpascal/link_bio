@@ -158,6 +158,58 @@ body{
 </head>
 
 <body>
+
+  <script>
+function isTikTokWebView() {
+  return /TikTok/i.test(navigator.userAgent);
+}
+
+if (isTikTokWebView()) {
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <div style="
+      position:fixed;
+      inset:0;
+      background:#020617;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:24px;
+    ">
+      <h2 style="color:#3ddc84;margin-bottom:12px">
+        Descargar IDORAMU
+      </h2>
+      <p style="color:#94a3b8;max-width:320px">
+        TikTok no permite descargas directas.<br>
+        Abre esta página en tu navegador.
+      </p>
+      <button onclick="openExternal()"
+        style="
+          margin-top:20px;
+          padding:14px 22px;
+          border-radius:14px;
+          border:none;
+          background:#3ddc84;
+          color:#020617;
+          font-weight:700;
+          font-size:16px;
+        ">
+        Abrir en navegador
+      </button>
+    </div>
+    `
+  );
+}
+
+function openExternal() {
+  window.location.href = window.location.href;
+}
+</script>
+
 <div class="container">
 
 <!-- HEADER -->
@@ -193,7 +245,31 @@ body{
     Descarga directa desde nuestro sitio oficial.
   </p>
 
-  <a href="IDORAMU.apk" download class="btn android">Descargar IDORAMU.apk</a>
+  <!-- <a href="https://link-bio-snowy-three.vercel.app/IDORAMU.apk" download="IDORAMU.apk" class="btn android" target="_blank">Descargar IDORAMU.apk</a> -->
+  <a href="https://link-bio-snowy-three.vercel.app/IDORAMU.apk"
+   class="btn android"
+   download="IDORAMU.apk"
+   target="_blank"
+   onclick="openExternal(event)">
+   Descargar IDORAMU.apk
+</a>
+
+<script>
+function openExternal(e){
+  e.preventDefault();
+
+  // Intent sin navegador forzado
+  location.href =
+    "intent://idoramu.com/IDORAMU.apk" +
+    "#Intent;scheme=https;action=android.intent.action.VIEW;end";
+
+  // Fallback por si intent falla
+  setTimeout(() => {
+    window.location.href = "https://link-bio-snowy-three.vercel.app/IDORAMU.apk";
+  }, 700);
+}
+</script>
+
 </div>
 
 <!-- IOS -->
